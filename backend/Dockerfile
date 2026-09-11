@@ -32,8 +32,8 @@ RUN adduser --disabled-password --gecos '' appuser \
 USER appuser
 
 # Expose port
-EXPOSE 8000
+EXPOSE 10000
 
 # Health check
-# Run the application on Railway's assigned port, or 8000 locally.
-CMD gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-8000}
+# Run the application on the platform-assigned port, or 10000 locally.
+CMD gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-10000}

@@ -21,6 +21,6 @@ RUN adduser --disabled-password --gecos '' appuser \
     && chown -R appuser:appuser /app
 USER appuser
 
-EXPOSE 8000
+EXPOSE 10000
 
-CMD gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-8000}
+CMD gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-10000}
