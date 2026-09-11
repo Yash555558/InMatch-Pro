@@ -36,4 +36,4 @@ EXPOSE 10000
 
 # Health check
 # Run the application on the platform-assigned port, or 10000 locally.
-CMD gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-10000}
+CMD gunicorn app.main:app -w 1 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:${PORT:-10000}
