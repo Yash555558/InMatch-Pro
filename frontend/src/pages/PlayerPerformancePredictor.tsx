@@ -5,6 +5,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { iplTeams, mockPlayers } from "@/data/mockData";
 import { Users, Target, TrendingUp, Star, Plus, X } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 interface SelectedPlayer {
   id: number;
@@ -130,7 +131,7 @@ export default function PlayerPerformancePredictor() {
   const [allPlayers, setAllPlayers] = useState<string[]>([]);
 
   useEffect(() => {
-    fetch("/api/player-performance/all_players")
+    fetch(apiUrl("/api/player-performance/all_players"))
       .then(res => res.json())
       .then(data => setAllPlayers(data.players));
   }, []);
@@ -138,7 +139,7 @@ export default function PlayerPerformancePredictor() {
   const handlePlayerSelect = async (playerName: string) => {
     if (selectedPlayers.length < 11 && !selectedPlayers.find(p => p.name === playerName)) {
       // Fetch role and team from backend
-      const res = await fetch(`/api/player-performance/player_info/${encodeURIComponent(playerName)}`);
+      const res = await fetch(apiUrl(`/api/player-performance/player_info/${encodeURIComponent(playerName)}`));
       const info = await res.json();
       setSelectedPlayers([...selectedPlayers, {
         id: playerName,
@@ -161,7 +162,7 @@ export default function PlayerPerformancePredictor() {
     // Prepare payload (remove id, keep name, team, role)
     const payload = selectedPlayers.map(({ name, team, role }) => ({ name, team, role }));
 
-    const response = await fetch("/api/player-performance/predict_player_performance", {
+    const response = await fetch(apiUrl("/api/player-performance/predict_player_performance"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

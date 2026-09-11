@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Search, User, BarChart3, TrendingUp, Target, TrendingDown, Minus } from "lucide-react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { useLocation } from "react-router-dom";
+import { apiUrl } from "@/lib/api";
 
 interface PlayerStat {
   batter: string;
@@ -32,7 +33,7 @@ export default function PlayerStatsLookup() {
   const location = useLocation();
 
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/player-stats/batters`)
+    fetch(apiUrl("/api/player-stats/batters"))
       .then(res => res.json())
       .then(data => setBatters(data.batters))
       .catch(() => setError("Failed to load batters list"));
@@ -58,7 +59,7 @@ export default function PlayerStatsLookup() {
     setSelectedPlayer(playerName);
     setError(null);
     try {
-      const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/player-stats/${encodeURIComponent(playerName)}`);
+      const res = await fetch(apiUrl(`/api/player-stats/${encodeURIComponent(playerName)}`));
       if (!res.ok) throw new Error("Player not found");
       const data = await res.json();
       setPlayerData(data);

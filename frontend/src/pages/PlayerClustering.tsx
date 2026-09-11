@@ -18,8 +18,9 @@ import {
   CommandEmpty
 } from "@/components/ui/command";
 import { useNavigate } from "react-router-dom";
+import { apiUrl } from "@/lib/api";
 
-const API_BASE = "/api/clustering";
+const API_BASE = apiUrl("/api/clustering");
 
 type BatterCluster = {
   cluster_label: string;

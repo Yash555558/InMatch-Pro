@@ -4,6 +4,7 @@ import { Button } from "../components/ui/button";
 import { Command, CommandInput, CommandList, CommandItem, CommandEmpty } from "../components/ui/command";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/table";
 import { toast } from "../components/ui/use-toast";
+import { apiUrl } from "@/lib/api";
 
 // --- PlayerSelector Component ---
 type PlayerSelectorProps = {
@@ -158,7 +159,7 @@ export default function FantasyPointsEstimator() {
   useEffect(() => {
     setLoadingPlayers(true);
     setFetchError(null);
-    fetch("/api/fantasy/players")
+    fetch(apiUrl("/api/fantasy/players"))
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch player names");
         return res.json();
@@ -240,7 +241,7 @@ export default function FantasyPointsEstimator() {
       if (capCount === 1 && vcapCount === 1) {
         setEstimateError(null);
         setLoadingEstimate(true);
-        fetch("/api/fantasy/estimate", {
+        fetch(apiUrl("/api/fantasy/estimate"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

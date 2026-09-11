@@ -15,7 +15,7 @@ from app.routes import (
 load_dotenv()
 
 # Configuration
-ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
+ENVIRONMENT = os.getenv("ENVIRONMENT", "production")
 CORS_ORIGINS = os.getenv(
     "CORS_ORIGINS",
     "http://localhost:8080,http://localhost:3000"

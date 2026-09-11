@@ -18,7 +18,7 @@ services:
     staticPublishPath: "./frontend/dist"
     envVars:
       - key: VITE_API_URL
-        value: https://your-backend-url.onrender.com
+        sync: false
       - key: VITE_ENVIRONMENT
         value: production
     routes:

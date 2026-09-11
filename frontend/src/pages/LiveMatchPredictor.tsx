@@ -7,6 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Badge } from "@/components/ui/badge";
 import { iplTeams, iplVenues } from "@/data/mockData";
 import { BarChart3, TrendingUp, Target, Clock } from "lucide-react";
+import { apiUrl } from "@/lib/api";
 
 interface MatchState {
   batting_team: string;
@@ -82,7 +83,7 @@ export default function LiveMatchPredictor() {
         runs_last_5: parseInt(matchState.runs_last_5),
         target: target
       };
-      const response = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:8000'}/api/live-match/predict`, {
+      const response = await fetch(apiUrl("/api/live-match/predict"), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(reqBody),
