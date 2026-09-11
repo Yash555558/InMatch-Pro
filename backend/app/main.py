@@ -16,10 +16,14 @@ load_dotenv()
 
 # Configuration
 ENVIRONMENT = os.getenv("ENVIRONMENT", "production")
-CORS_ORIGINS = os.getenv(
-    "CORS_ORIGINS",
-    "http://localhost:8080,http://localhost:3000"
-).split(",")
+CORS_ORIGINS = [
+    origin.strip().rstrip("/")
+    for origin in os.getenv(
+        "CORS_ORIGINS",
+        "http://localhost:8080,http://localhost:3000"
+    ).split(",")
+    if origin.strip()
+]
 
 app = FastAPI(
     title="InMatch Pro API",
