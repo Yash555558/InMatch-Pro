@@ -65,6 +65,16 @@ app.include_router(
 )
 
 
+@app.get("/", tags=["Health"])
+def root():
+    return {
+        "name": "InMatch Pro API",
+        "status": "ok",
+        "health": "/health",
+        "docs": "/docs" if ENVIRONMENT == "development" else None,
+    }
+
+
 @app.get("/health", tags=["Health"])
 def health_check():
     import sys
