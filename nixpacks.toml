@@ -1,0 +1,11 @@
+[variables]
+PYTHONPATH = "/app/backend"
+
+[phases.setup]
+nixPkgs = ["python39", "pip"]
+
+[phases.install]
+cmds = ["pip install -r backend/requirements.txt"]
+
+[start]
+cmd = "chmod +x start.sh && ./start.sh"

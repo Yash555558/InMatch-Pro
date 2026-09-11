@@ -1,0 +1,158 @@
+# Environment files (SAFE TO IGNORE - platforms generate their own)
+.env
+.env.local
+.env.production
+.env.staging
+.env.development
+*.env
+!.env.example
+
+# Python cache files (SAFE TO IGNORE - Python regenerates automatically)
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+**/__pycache__/
+
+# Python build artifacts (SAFE TO IGNORE - not needed for deployment)
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Build outputs
+frontend/dist/
+frontend/build/
+*.tgz
+*.tar.gz
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Docker
+.dockerignore
+
+# Temporary files
+*.tmp
+*.temp
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ML Models - KEEPING THESE (needed for app functionality)
+# Models are included for complete portfolio demonstration
+
+# API Keys and Secrets (SAFE TO IGNORE - sensitive data)
+**/secrets/
+**/keys/
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Database files (SAFE TO IGNORE - not used in this project)
+*.db
+*.sqlite
+*.sqlite3
+
+# Development/Test files (SAFE TO IGNORE - not needed for production)
+test_*.py
+*_test.py
+simple_main.py
+temp_*.py
+*.tmp
+*.temp
+
+# Lock files (SAFE TO IGNORE - platforms regenerate from package.json)
+package-lock.json
+yarn.lock
+bun.lockb
+
+# Platform-specific deployment configs (SAFE TO IGNORE - using Docker/render.yaml)
+runtime.txt
+nixpacks.toml
+railway.toml
+
+# Keep example files
+!*.example.*
